@@ -1,11 +1,21 @@
 import Moment from 'moment';
 import React, { useState } from 'react';
 
-function Checkbox(){
-    const formatDate = Moment().format('MM-DD-YYYY')
-    const emptyDate = '__________'
-    const [dateAppText, setAppText] = useState(emptyDate)
- 
+function Box(boxInfo){
+    const formatDate = Moment().format('MM-DD-YYYY');
+    const dataSet = boxInfo['boxInfo'];
+    var initialDate = '__________';
+    var emptyDate = '__________';
+    var savedDate = dataSet[1];
+
+    const savedCheck = dataSet[0];
+
+    if (savedDate != '__________'){
+        initialDate = savedDate;
+    }
+    
+
+    const [dateAppText, setAppText] = useState(initialDate);
 
     const handleAppChange = event =>{
         if (event.target.checked){
@@ -25,4 +35,4 @@ function Checkbox(){
     );
 }
 
-export default Checkbox
+export default Box
