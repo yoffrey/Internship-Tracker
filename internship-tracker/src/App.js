@@ -1,4 +1,3 @@
-import Checkbox from './components/Checkbox'
 import internshipData from './internshipData.json'
 import Box from './components/Box'
 
