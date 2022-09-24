@@ -1,5 +1,5 @@
 import internshipData from './internshipData.json'
-import Box from './components/Box'
+import Box from './components/Box';
 
 function App() {
   return (
@@ -14,18 +14,17 @@ function App() {
                 <th>Rejected</th>
                 <th>Offer</th>
               </tr>
-              
-              {internshipData.map((item) => (
-                <tr companyName={item.Company}>
-                  <td>{item.Company}</td>
-                  <td><Box boxInfo = {item.Application}/></td>
-                  <td><Box boxInfo = {item.OA}/></td>
-                  <td><Box boxInfo = {item.Interview}/></td>
-                  <td><Box boxInfo = {item.Rejected}/></td>
-                  <td><Box boxInfo = {item.Offer}/></td>
-                </tr>
-              ))} 
-          </table>
+              {Object.keys(internshipData).map((Company, i) => (
+                <><tr key={Company}></tr>
+                <td>{Company}</td>
+                <td><Box boxInfo = {{'a': internshipData[Company].Application, 'b': Company, 'c': 'Application'}}/></td>
+                <td><Box boxInfo = {{'a': internshipData[Company].OA, 'b': Company, 'c': 'OA'}}/></td>
+                <td><Box boxInfo = {{'a': internshipData[Company].Interview, 'b': Company, 'c': 'Interview'}}/></td>
+                <td><Box boxInfo = {{'a': internshipData[Company].Rejected, 'b': Company, 'c': 'Rejected'}}/></td>
+                <td><Box boxInfo = {{'a': internshipData[Company].Offer, 'b': Company, 'c': 'Offer'}}/></td>
+                </>
+              ))}
+            </table>
     </div>
   );
 }

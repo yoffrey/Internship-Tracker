@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import updateJSON from './updateJSON';
 
 function Box(boxInfo){
-
     const formatDate = Moment().format('MM-DD-YYYY');
-    const dataSet = boxInfo['boxInfo'];
+    const dataSet = boxInfo.boxInfo.a
+    const companyName = boxInfo.boxInfo.b
+    const boxCol = boxInfo.boxInfo.c
     var initialDate = '__________';
     var emptyDate = '__________';
     var savedDate = dataSet[1];
@@ -32,9 +33,9 @@ function Box(boxInfo){
             setAppText(emptyDate);
         }
         setBoxChecked(!checked);
-        updateJSON(boxInfo, formatDate, setBoxChecked)
+        updateJSON(companyName, boxCol, formatDate, checked)
     };
-
+    
     return(
         <h4>
             <td>
@@ -42,7 +43,7 @@ function Box(boxInfo){
                     onChange={handleAppChange}
                     checked={checked}
                 /> 
-                {dateAppText} 
+                {dateAppText}
             </td>
         </h4>
     );

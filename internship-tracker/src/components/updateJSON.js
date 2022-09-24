@@ -1,14 +1,15 @@
 import internshipData from './../internshipData.json'
+import Cookies from 'js-cookie';
 
-function updateJSON(boxInfo, formatDate, setBoxChecked) {
-    if (setBoxChecked) {
-        boxInfo['boxInfo'][0] = '0';
+function updateJSON(companyName, boxCol, formatDate, checked) {
+    if (checked) {
+        internshipData[companyName][boxCol][0] = '0';
+        internshipData[companyName][boxCol][1] = '__________';
     }
     else {
-        boxInfo['boxInfo'][0] = '1';
+        internshipData[companyName][boxCol][0] = '1';
+        internshipData[companyName][boxCol][1] = formatDate;
     }
-    boxInfo['boxInfo'][1] = formatDate;
-    console.log(internshipData)
 }
 
 export default updateJSON

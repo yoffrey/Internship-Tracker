@@ -26,6 +26,9 @@
       "react-app/jest"
     ]
   },
+  "browser": {
+    "fs": false
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -38,4 +41,5 @@
       "last 1 safari version"
     ]
   }
+  
 }
