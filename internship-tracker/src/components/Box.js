@@ -35,13 +35,12 @@ function Box(boxInfo){
         setBoxChecked(!checked);
         updateJSON(companyName, boxCol, formatDate, checked)
     };
-    
     return(
         <h4>
             <td>
                 <input type="checkbox" 
                     onChange={handleAppChange}
-                    checked={checked}
+                    checked={checked} 
                 /> 
                 {dateAppText}
             </td>

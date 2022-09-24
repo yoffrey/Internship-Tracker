@@ -1,7 +1,9 @@
-import internshipData from './internshipData.json'
+import checkLocalStorage from './components/checkLocalStorage';
 import Box from './components/Box';
 
 function App() {
+  let internshipData = {}
+  internshipData = checkLocalStorage()
   return (
     <div>
       <h2>Internship Application Tracker</h2>

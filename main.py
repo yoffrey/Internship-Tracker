@@ -38,7 +38,6 @@ for a in soup.find('table', attrs={'class':'table internships-table table-border
         set['Offer'] = ['0', '__________']
         allData[name] = set
 
-
 with open("internshipData.json", "w") as outfile:
     json.dump(allData, outfile, indent=None)
     #for c in a.find_all('td', attrs={'apply-th lfont m-3 py-3 d-none d-sm-table-cell'}):
