@@ -1,14 +1,22 @@
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato'), url(./Lato.ttf) format('ttf');
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
   margin: 3rem;
-  background-color: #dfdfdf;
+  background-color: #ffffff;
 }
 
 h1, h2 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-style: normal;
   color: #333333;
 }
 
@@ -73,15 +81,33 @@ h1, h2 {
 }
 
 table {
-  border: 2px solid forestgreen;
-  width: 1000px;
-  height: 200px;
+  font-family: 'Lato', sans-serif;
+  border: 2px solid rgb(36, 123, 159);
+  text-align: center;
+}
+
+tr {
+  height: 0px;
+}
+
+tr td {
+  height: auto !important;
 }
   
 th {
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
+  min-width: 150px;
 }
   
 td {
-  text-align: center;
+  text-align: left;
+}
+
+div {
+  height: 0px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
 }

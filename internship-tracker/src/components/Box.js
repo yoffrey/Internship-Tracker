@@ -7,8 +7,8 @@ function Box(boxInfo){
     const dataSet = boxInfo.boxInfo.a
     const companyName = boxInfo.boxInfo.b
     const boxCol = boxInfo.boxInfo.c
-    var initialDate = '__________';
-    var emptyDate = '__________';
+    var initialDate = '';
+    var emptyDate = '';
     var savedDate = dataSet[1];
     const savedCheck = dataSet[0];
     var setChecked = false
@@ -17,7 +17,7 @@ function Box(boxInfo){
         setChecked = true;
     }
     // See if date is already stored
-    if (savedDate != '__________'){
+    if (savedDate != ''){
         initialDate = savedDate;
     };
     

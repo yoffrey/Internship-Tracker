@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <h2>Internship Application Tracker</h2>
-          <table>
+          <table class="center">
               <tr>
                 <th>Company</th>
                 <th>Application</th>
@@ -18,15 +18,16 @@ function App() {
               </tr>
               {Object.keys(internshipData).map((Company, i) => (
                 <><tr key={Company}></tr>
-                <td>{Company}</td>
-                <td><Box boxInfo = {{'a': internshipData[Company].Application, 'b': Company, 'c': 'Application'}}/></td>
-                <td><Box boxInfo = {{'a': internshipData[Company].OA, 'b': Company, 'c': 'OA'}}/></td>
-                <td><Box boxInfo = {{'a': internshipData[Company].Interview, 'b': Company, 'c': 'Interview'}}/></td>
-                <td><Box boxInfo = {{'a': internshipData[Company].Rejected, 'b': Company, 'c': 'Rejected'}}/></td>
-                <td><Box boxInfo = {{'a': internshipData[Company].Offer, 'b': Company, 'c': 'Offer'}}/></td>
+                <td><div>{Company}</div></td>
+                <td><div><Box boxInfo = {{'a': internshipData[Company].Application, 'b': Company, 'c': 'Application'}}/></div></td>
+                <td><div><Box boxInfo = {{'a': internshipData[Company].OA, 'b': Company, 'c': 'OA'}}/></div></td>
+                <td><div><Box boxInfo = {{'a': internshipData[Company].Interview, 'b': Company, 'c': 'Interview'}}/></div></td>
+                <td><div><Box boxInfo = {{'a': internshipData[Company].Rejected, 'b': Company, 'c': 'Rejected'}}/></div></td>
+                <td><div><Box boxInfo = {{'a': internshipData[Company].Offer, 'b': Company, 'c': 'Offer'}}/></div></td>
                 </>
               ))}
-            </table>
+
+          </table>
     </div>
   );
 }

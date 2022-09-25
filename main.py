@@ -31,11 +31,11 @@ for a in soup.find('table', attrs={'class':'table internships-table table-border
         location.append(place)
         
         set['Location'] = place
-        set['Application'] = ['0', '__________']
-        set['OA'] = ['0', '__________']
-        set['Interview'] = ['0', '__________']
-        set['Rejected'] = ['0', '__________']
-        set['Offer'] = ['0', '__________']
+        set['Application'] = ['0', '']
+        set['OA'] = ['0', '']
+        set['Interview'] = ['0', '']
+        set['Rejected'] = ['0', '']
+        set['Offer'] = ['0', '']
         allData[name] = set
 
 with open("internshipData.json", "w") as outfile:

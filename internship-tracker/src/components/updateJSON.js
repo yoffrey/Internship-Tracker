@@ -4,7 +4,7 @@ function updateJSON(companyName, boxCol, formatDate, checked) {
     let internshipData = checkLocalStorage()
     if (checked) {
         internshipData[companyName][boxCol][0] = '0';
-        internshipData[companyName][boxCol][1] = '__________';
+        internshipData[companyName][boxCol][1] = '';
     }
     else {
         internshipData[companyName][boxCol][0] = '1';
