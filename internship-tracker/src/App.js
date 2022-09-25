@@ -1,10 +1,34 @@
 import checkLocalStorage from './components/checkLocalStorage';
 import Box from './components/Box';
+import { GoogleLogin } from 'react-google-login';
+import { gapi } from 'gapi-script';
+import { useEffect } from 'react';
 
 function App() {
+  const clientId = '111882747760-7ripd0hh6hpq5tuistbd79qg65nk7fb9.apps.googleusercontent.com'
+
+  useEffect(() => {
+    const initClient = () => {
+          gapi.client.init({
+          clientId: clientId,
+          scope: ''
+        });
+     };
+     gapi.load('client:auth2', initClient);
+ });
+
+  const onSuccess = (res) => {
+        console.log('success:', res);
+    };
+    const onFailure = (err) => {
+        console.log('failed:', err);
+    };
+
   let internshipData = {}
   internshipData = checkLocalStorage()
+  
   return (
+    
     <div>
       <h2>Internship Application Tracker</h2>
           <table class="center">
@@ -26,6 +50,7 @@ function App() {
                 <td><div><Box boxInfo = {{'a': internshipData[Company].Offer, 'b': Company, 'c': 'Offer'}}/></div></td>
                 </>
               ))}
+              <span></span>
 
           </table>
     </div>

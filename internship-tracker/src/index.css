@@ -84,6 +84,7 @@ table {
   font-family: 'Lato', sans-serif;
   border: 2px solid rgb(36, 123, 159);
   text-align: center;
+  height: auto !important;
 }
 
 tr {
