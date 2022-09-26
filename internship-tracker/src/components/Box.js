@@ -2,6 +2,7 @@ import Moment from 'moment';
 import React, { useState } from 'react';
 import updateJSON from './updateJSON';
 
+
 function Box(boxInfo){
     const formatDate = Moment().format('MM-DD-YYYY');
     const dataSet = boxInfo.boxInfo.a
@@ -35,11 +36,12 @@ function Box(boxInfo){
         setBoxChecked(!checked);
         updateJSON(index, boxCol, formatDate, checked)
     };
+
     return(
         <h4>
             <td>
                 <input type="checkbox" 
-                    onChange={handleBoxClick}
+                    onChange={(handleBoxClick)}
                     checked={checked} 
                 /> 
                 {dateAppText}

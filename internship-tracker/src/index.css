@@ -102,10 +102,12 @@ th {
   
 td {
   text-align: left;
+  height: 10px;
+  min-width: 20px;
 }
 
 div {
-  height: 0px;
+  height: 10px;
 }
 
 .center {

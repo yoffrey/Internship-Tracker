@@ -7,7 +7,6 @@ function autoSort(index, boxCol, formatDate, checked) {
         if (checked){
 
         }
-        console.log(checked)
         return internshipData
     }
     else if (boxCol == 'OA'){
@@ -18,10 +17,15 @@ function autoSort(index, boxCol, formatDate, checked) {
     }
     else if (boxCol == 'Rejected'){
         if (checked){
+            return internshipData
         }
         else {
-            console.log(index)
-            internshipData.push(internshipData.splice(index, 1)[0])
+            let i=index+1
+            while (internshipData[index][boxCol][0] > internshipData[i][boxCol][0] && internshipData[index][boxCol][1] > internshipData[i][boxCol][1] && i<internshipData.length-1){
+                i+=1
+            }
+            const element = internshipData.splice(index, 1)[0];
+            internshipData.splice(i, 0, element);
         }
     }
     else if (boxCol == 'Offer'){
