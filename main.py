@@ -7,7 +7,7 @@ driver = webdriver.Chrome('C:/bin/chromedriver')
 
 #{"Company": "Optiver", "Location": "Amsterdam, Netherlands", "Application": [0, "__________"],  "OA": [0, "__________"],  "Interview": [0, "__________"],  "Rejected": [0, "__________"],  "Offer": [0, "__________"]}
 
-allData = {}
+allData = []
 company = []
 location = []
 
@@ -29,14 +29,14 @@ for a in soup.find('table', attrs={'class':'table internships-table table-border
         place = seasonRemover(place)
         company.append(name)
         location.append(place)
-        
+        set['Company'] = name
         set['Location'] = place
         set['Application'] = ['0', '']
         set['OA'] = ['0', '']
         set['Interview'] = ['0', '']
         set['Rejected'] = ['0', '']
         set['Offer'] = ['0', '']
-        allData[name] = set
+        allData.append(set)
 
 with open("internshipData.json", "w") as outfile:
     json.dump(allData, outfile, indent=None)

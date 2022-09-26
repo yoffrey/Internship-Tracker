@@ -1,17 +1,18 @@
 import checkLocalStorage from './checkLocalStorage';
+import autoSort from './sort';
 
-function updateJSON(companyName, boxCol, formatDate, checked) {
+function updateJSON(index, boxCol, formatDate, checked) {
     let internshipData = checkLocalStorage()
     if (checked) {
-        internshipData[companyName][boxCol][0] = '0';
-        internshipData[companyName][boxCol][1] = '';
+        internshipData[index][boxCol][0] = '0';
+        internshipData[index][boxCol][1] = '';        
     }
     else {
-        internshipData[companyName][boxCol][0] = '1';
-        internshipData[companyName][boxCol][1] = formatDate;
+        internshipData[index][boxCol][0] = '1';
+        internshipData[index][boxCol][1] = formatDate;
     }
     localStorage.setItem('myData.json', JSON.stringify(internshipData))
-    checkLocalStorage()
+    internshipData = autoSort(index, boxCol, formatDate, checked)
 }
 
 export default updateJSON

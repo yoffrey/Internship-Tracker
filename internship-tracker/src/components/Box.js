@@ -5,7 +5,7 @@ import updateJSON from './updateJSON';
 function Box(boxInfo){
     const formatDate = Moment().format('MM-DD-YYYY');
     const dataSet = boxInfo.boxInfo.a
-    const companyName = boxInfo.boxInfo.b
+    const index = boxInfo.boxInfo.b
     const boxCol = boxInfo.boxInfo.c
     var initialDate = '';
     var emptyDate = '';
@@ -23,7 +23,7 @@ function Box(boxInfo){
     
     const [dateAppText, setAppText] = useState(initialDate);
     const [checked, setBoxChecked] = useState(setChecked)
-    const handleAppChange = event => {
+    const handleBoxClick = event => {
         // If box is checked
         if (event.target.checked){
             // Change the date
@@ -33,13 +33,13 @@ function Box(boxInfo){
             setAppText(emptyDate);
         }
         setBoxChecked(!checked);
-        updateJSON(companyName, boxCol, formatDate, checked)
+        updateJSON(index, boxCol, formatDate, checked)
     };
     return(
         <h4>
             <td>
                 <input type="checkbox" 
-                    onChange={handleAppChange}
+                    onChange={handleBoxClick}
                     checked={checked} 
                 /> 
                 {dateAppText}
