@@ -1,7 +1,7 @@
 import Moment from 'moment';
 import React, { useState } from 'react';
 import updateJSON from './updateJSON';
-
+import checkLocalStorage from './checkLocalStorage';
 
 function Box(boxInfo){
     const formatDate = Moment().format('MM-DD-YYYY');
@@ -12,7 +12,7 @@ function Box(boxInfo){
     var emptyDate = '';
     var savedDate = dataSet[1];
     const savedCheck = dataSet[0];
-    var setChecked = false
+    var setChecked = false;
     // See if checkbox is checked 
     if (savedCheck == '1'){
         setChecked = true;
@@ -23,7 +23,8 @@ function Box(boxInfo){
     };
     
     const [dateAppText, setAppText] = useState(initialDate);
-    const [checked, setBoxChecked] = useState(setChecked)
+    const [checked, setBoxChecked] = useState(setChecked);
+
     const handleBoxClick = event => {
         // If box is checked
         if (event.target.checked){
@@ -41,8 +42,9 @@ function Box(boxInfo){
         <h4>
             <td>
                 <input type="checkbox" 
-                    onChange={(handleBoxClick)}
+                    onChange={handleBoxClick}
                     checked={checked} 
+                    updateTable={boxInfo.updateTable}
                 /> 
                 {dateAppText}
             </td>

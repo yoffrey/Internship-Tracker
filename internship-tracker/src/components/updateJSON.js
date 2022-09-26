@@ -14,6 +14,7 @@ function updateJSON(index, boxCol, formatDate, checked) {
     localStorage.setItem('myData.json', JSON.stringify(internshipData))
     internshipData = autoSort(index, boxCol, formatDate, checked)
     localStorage.setItem('myData.json', JSON.stringify(internshipData))
+    console.log(internshipData)
 }
 
 export default updateJSON
