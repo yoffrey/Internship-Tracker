@@ -27,6 +27,7 @@ function Box(props){
 
     const [dateAppText, setAppText] = useState(initialDate);
     const [checked, setBoxChecked] = useState(setChecked);
+    
 
     const handleBoxClick = event => {
         if (event.target.checked){
@@ -36,29 +37,45 @@ function Box(props){
         else{
             setAppText(emptyDate);
         }
-
         setBoxChecked(!checked);
+        
         updateJSON(index, boxCol, formatDate, checked);
         internshipData = checkLocalStorage();
-        console.log(internshipData)
         props.setTableData(internshipData);
-        console.log(props.tableData)
     }
 
     return (
         <td>
-            <input type="checkbox" 
-            onChange={handleBoxClick}
-            checked={checked} 
-            />
         </td>
     )
 }
+
 
 function GenTable(){
     let internshipData = checkLocalStorage()
 
     const [tableData, setTableData] = useState(internshipData);
+    const [checked, setBoxChecked] = useState('0');
+
+    function checkClicked(item, col){
+        if (item[col] == '1'){
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
+    const handleClick = (event, item, col) => {
+        const formatDate = Moment().format('MM-DD-YYYY');
+        let checked = item[col][0]
+        checked = !checked
+        console.log(checked)
+        
+        updateJSON(item, col, formatDate, checked);
+        internshipData = checkLocalStorage;
+        setTableData(internshipData);
+    };
 
     return(
         <table class="center" >
@@ -76,18 +93,33 @@ function GenTable(){
                     <><tr key={i}></tr>
                     <td><div>{item.Company}</div></td>
                     <td><div><Box boxInfo={{'a': item.Application, 'b': i, 'c': 'Application'}} tableData={tableData} setTableData={setTableData} />
+                        <div><input type="checkbox" 
+                        onChange = {event => handleClick(event, item, 'OA')}
+                        /></div>
                         <div>{item.Application[1]}</div>
                         </div></td>
                     <td><div><Box boxInfo={{'a': item.OA, 'b': i, 'c': 'OA'}} tableData={tableData} setTableData={setTableData} />
+                        <div><input type="checkbox" 
+                        onChange = {event => handleClick(event, item, 'OA')}
+                        /></div>
                         <tr>{item.OA[1]}</tr>
                         </div></td>
                     <td><div><Box boxInfo={{'a': item.Interview, 'b': i, 'c': 'Interview'}} tableData={tableData} setTableData={setTableData} />
+                        <div><input type="checkbox" 
+                        clicked = {checkClicked(item, 'Interview')}
+                        onChange = {event => handleClick(event, item, 'Interview')}
+                        /></div>
                         <tr>{item.Interview[1]}</tr>
                         </div></td>
                     <td><div><Box boxInfo={{'a': item.Rejected, 'b': i, 'c': 'Rejected'}} tableData={tableData} setTableData={setTableData} />
+                        <div><input type = "checkbox" 
+                        onChange = {event => handleClick(event, item, 'Rejected')}
+                        /></div>
                         <tr>{item.Rejected[1]}</tr>
                         </div></td>
                     <td><div><Box boxInfo={{'a': item.Offer, 'b': i, 'c': 'Offer'}} tableData={tableData} setTableData={setTableData} />
+                        <div><input type="checkbox" 
+                        /></div>
                         <tr>{item.Offer[1]}</tr>
                         </div></td>
                     </>

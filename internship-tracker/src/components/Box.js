@@ -44,7 +44,6 @@ function Box(boxInfo){
                 <input type="checkbox" 
                     onChange={handleBoxClick}
                     checked={checked} 
-                    updateTable={boxInfo.updateTable}
                 /> 
                 {dateAppText}
             </td>
