@@ -5,10 +5,10 @@ import checkLocalStorage from './checkLocalStorage';
 import props from 'prop-types';
 
 function GenTable(){
-    let internshipData = checkLocalStorage()
+    var internshipData = checkLocalStorage()
     console.log(internshipData)
     const [tableData, setTableData] = useState(internshipData);
-    internshipData.sort((a, b) => a.company - b.company)
+    internshipData.sort((a, b) => a.rejected - b.rejected)
     console.log(internshipData)
     localStorage.setItem('myData', JSON.stringify(internshipData))
 
@@ -21,8 +21,7 @@ function GenTable(){
         Update the file
         Update tableData
         */
-        const today = new Date()
-        const formatDate = today.toLocaleDateString()
+        const formatDate = new Date()
         let checked = item[col]
         if (checked == null){
             checked = formatDate
@@ -54,35 +53,35 @@ function GenTable(){
                             </td>
                             <td>
                                 <div><input type="checkbox"
-                                    defaultChecked={item.application}
+                                    checked={item.application !== null}
                                     onChange = {event => handleClick(event, item, i, 'application')}/>
                                     {item.application}
                                 </div>
                             </td>
                             <td>
                                 <div><input type="checkbox"
-                                    defaultChecked={item.oa}
+                                    checked={item.oa !== null}
                                     onChange = {event => handleClick(event, item, i, 'oa')}/>
                                     {item.oa}
                                 </div>
                             </td>
                             <td>
                                 <div><input type="checkbox"
-                                    defaultChecked={item.interview}
+                                    checked={item.interview !== null}
                                     onChange = {event => handleClick(event, item, i, 'interview')}/>
                                     {item.interview}
                                 </div>
                             </td>
                             <td>
                                 <div><input type="checkbox"
-                                    defaultChecked={item.rejected}
+                                    checked={item.rejected !== null}
                                     onChange = {event => handleClick(event, item, i, 'rejected')}/>
                                     {item.rejected}
                                 </div>
                             </td>
                             <td>
                                 <div><input type="checkbox"
-                                    defaultChecked={item.offer}
+                                    checked={item.offer !== null}
                                     onChange = {event => handleClick(event, item, i, 'offer')}/>
                                     {item.offer}
                                 </div>
