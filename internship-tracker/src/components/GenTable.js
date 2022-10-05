@@ -34,6 +34,16 @@ function GenTable(){
         setTableData(internshipData)
     }
 
+    const convertToPrettyDate = (date) => {
+        if (date !== null) {
+            var d = new Date(date)
+            var s = d.toLocaleDateString()
+            return s
+        } else {
+            return null
+        }
+    }
+
     return(
         <table class="center" >
                 <tr>
@@ -55,35 +65,35 @@ function GenTable(){
                                 <div><input type="checkbox"
                                     checked={item.application !== null}
                                     onChange = {event => handleClick(event, item, i, 'application')}/>
-                                    {item.application}
+                                    {convertToPrettyDate(item.application)}
                                 </div>
                             </td>
                             <td>
                                 <div><input type="checkbox"
                                     checked={item.oa !== null}
                                     onChange = {event => handleClick(event, item, i, 'oa')}/>
-                                    {item.oa}
+                                    {convertToPrettyDate(item.oa)}
                                 </div>
                             </td>
                             <td>
                                 <div><input type="checkbox"
                                     checked={item.interview !== null}
                                     onChange = {event => handleClick(event, item, i, 'interview')}/>
-                                    {item.interview}
+                                    {convertToPrettyDate(item.interview)}
                                 </div>
                             </td>
                             <td>
                                 <div><input type="checkbox"
                                     checked={item.rejected !== null}
                                     onChange = {event => handleClick(event, item, i, 'rejected')}/>
-                                    {item.rejected}
+                                    {convertToPrettyDate(item.rejected)}
                                 </div>
                             </td>
                             <td>
                                 <div><input type="checkbox"
                                     checked={item.offer !== null}
                                     onChange = {event => handleClick(event, item, i, 'offer')}/>
-                                    {item.offer}
+                                    {convertToPrettyDate(item.offer)}
                                 </div>
                             </td>
                         </>
