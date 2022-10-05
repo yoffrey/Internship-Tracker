@@ -9,11 +9,8 @@ function updateJSON(index, boxCol, checked) {
     else {
         internshipData[index][boxCol] = checked;
     }
-    internshipData.sort((a, b) => a.rejected-b.rejected)
-    console.log(internshipData)
+    internshipData.sort((a, b) => b.application-a.application || b.oa-a.oa || b.interview-a.interview || b.offer-a.offer || a.rejected - b.rejected)
     localStorage.setItem('myData', JSON.stringify(internshipData))
-    // internshipData = autoSort(index, boxCol, checked)
-    // localStorage.setItem('myData.json', JSON.stringify(internshipData))
 }
 
 export default updateJSON

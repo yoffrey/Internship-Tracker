@@ -6,10 +6,9 @@ import props from 'prop-types';
 
 function GenTable(){
     var internshipData = checkLocalStorage()
-    console.log(internshipData)
     const [tableData, setTableData] = useState(internshipData);
-    internshipData.sort((a, b) => a.rejected - b.rejected)
-    console.log(internshipData)
+
+    internshipData.sort((a, b) => b.application-a.application || b.oa-a.oa || b.interview-a.interview || b.offer-a.offer || a.rejected - b.rejected)
     localStorage.setItem('myData', JSON.stringify(internshipData))
 
     const handleClick = (event, item, i, col) => {
@@ -30,8 +29,7 @@ function GenTable(){
             checked = null
         }
         updateJSON(i, col, checked)
-        internshipData = checkLocalStorage()
-        setTableData(internshipData)
+        setTableData(checkLocalStorage())
     }
 
     const convertToPrettyDate = (date) => {
@@ -45,19 +43,21 @@ function GenTable(){
     }
 
     return(
-        <table class="center" >
-                <tr>
-                    <th>Company</th>
-                    <th>Application</th>
-                    <th>OA</th>
-                    <th>Interview</th>
-                    <th>Rejected</th>
-                    <th>Offer</th>
-                </tr>
+        <table className="center" >
                 <tbody>
+                    <tr>
+                        <th>Company</th>
+                        <th>Application</th>
+                        <th>OA</th>
+                        <th>Interview</th>
+                        <th>Rejected</th>
+                        <th>Offer</th>
+                    </tr>
+                  
                     {tableData.map((item, i) => (
                         <>  
                             <tr key={i}></tr>
+                            <tr>
                             <td>
                                 <div>{item.company}</div>
                             </td>
@@ -96,8 +96,11 @@ function GenTable(){
                                     {convertToPrettyDate(item.offer)}
                                 </div>
                             </td>
+                            </tr>
+                            
                         </>
                     ))}
+                    
                 </tbody>
         </table>
             
