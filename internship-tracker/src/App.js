@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Table from './components/Table'
 import React, { useState } from 'react';
 import checkLocalStorage from './components/checkLocalStorage';
 import GenTable from './components/GenTable';

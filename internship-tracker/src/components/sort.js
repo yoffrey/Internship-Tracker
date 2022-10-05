@@ -1,6 +1,7 @@
 import checkLocalStorage from './checkLocalStorage';
 
-function autoSort(index, boxCol, formatDate, checked) {
+function autoSort(index, boxCol, checked) {
+    // boxCol = "Rejected"
     let internshipData = checkLocalStorage()
 
     if (boxCol == "Application"){
@@ -16,16 +17,14 @@ function autoSort(index, boxCol, formatDate, checked) {
         return internshipData
     }
     else if (boxCol == 'Rejected'){
-        if (checked){
+        if (checked == null){
+            // Goes back to the top
             return internshipData
         }
         else {
-            let i=index+1
-            while (internshipData[index][boxCol][0] > internshipData[i][boxCol][0] && internshipData[index][boxCol][1] > internshipData[i][boxCol][1] && i<internshipData.length-1){
-                i+=1
-            }
-            const element = internshipData.splice(index, 1)[0];
-            internshipData.splice(i, 0, element);
+            // if checked == '1'
+            internshipData.sort((a, b) => a.Rejected - b.Rejected);
+            return internshipData
         }
     }
     else if (boxCol == 'Offer'){

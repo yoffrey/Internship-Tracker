@@ -1,11 +1,13 @@
 import internshipData from './../internshipData.json'
 
 function checkLocalStorage(){
-    if (localStorage.getItem('myData.json') == null){
+    if (localStorage.getItem('myData') == null){
+        console.log('Data from default')
         return internshipData
     }
     else {
-        return JSON.parse(localStorage.getItem('myData.json'))
+        console.log('Data from local storage')
+        return JSON.parse(localStorage.getItem('myData'))
     }
 }
 

@@ -4,126 +4,91 @@ import updateJSON from './updateJSON';
 import checkLocalStorage from './checkLocalStorage';
 import props from 'prop-types';
 
-function Box(props){
-    const formatDate = Moment().format('MM-DD-YYYY');
-    const dataSet = props.boxInfo.a
-    const index = props.boxInfo.b
-    const boxCol = props.boxInfo.c
-    var initialDate = '';
-    var emptyDate = '';
-    var savedDate = dataSet[1];
-    const savedCheck = dataSet[0];
-    var setChecked = false;
-    // See if checkbox is checked 
-    if (savedCheck == '1'){
-        setChecked = true;
-    }
-    // See if date is already stored
-    if (savedDate != ''){
-        initialDate = savedDate;
-    };
-
-    let internshipData = checkLocalStorage()
-
-    const [dateAppText, setAppText] = useState(initialDate);
-    const [checked, setBoxChecked] = useState(setChecked);
-    
-
-    const handleBoxClick = event => {
-        if (event.target.checked){
-            // Change the date
-            setAppText(formatDate);
-        }
-        else{
-            setAppText(emptyDate);
-        }
-        setBoxChecked(!checked);
-        
-        updateJSON(index, boxCol, formatDate, checked);
-        internshipData = checkLocalStorage();
-        props.setTableData(internshipData);
-    }
-
-    return (
-        <td>
-        </td>
-    )
-}
-
-
 function GenTable(){
     let internshipData = checkLocalStorage()
-
+    console.log(internshipData)
     const [tableData, setTableData] = useState(internshipData);
-    const [checked, setBoxChecked] = useState('0');
+    internshipData.sort((a, b) => a.company - b.company)
+    console.log(internshipData)
+    localStorage.setItem('myData', JSON.stringify(internshipData))
 
-    function checkClicked(item, col){
-        if (item[col] == '1'){
-            return true
+    const handleClick = (event, item, i, col) => {
+        /* 
+        On Change
+        Get the date
+        Check/Uncheck the box
+        Save date/check to file
+        Update the file
+        Update tableData
+        */
+        const today = new Date()
+        const formatDate = today.toLocaleDateString()
+        let checked = item[col]
+        if (checked == null){
+            checked = formatDate
         }
         else {
-            return false
+            checked = null
         }
+        updateJSON(i, col, checked)
+        internshipData = checkLocalStorage()
+        setTableData(internshipData)
     }
-
-    const handleClick = (event, item, col) => {
-        const formatDate = Moment().format('MM-DD-YYYY');
-        let checked = item[col][0]
-        checked = !checked
-        console.log(checked)
-        
-        updateJSON(item, col, formatDate, checked);
-        internshipData = checkLocalStorage;
-        setTableData(internshipData);
-    };
 
     return(
         <table class="center" >
                 <tr>
-                <th>Company</th>
-                <th>Application</th>
-                <th>OA</th>
-                <th>Interview</th>
-                <th>Rejected</th>
-                <th>Offer</th>
+                    <th>Company</th>
+                    <th>Application</th>
+                    <th>OA</th>
+                    <th>Interview</th>
+                    <th>Rejected</th>
+                    <th>Offer</th>
                 </tr>
-
                 <tbody>
-                {tableData.map((item, i) => (
-                    <><tr key={i}></tr>
-                    <td><div>{item.Company}</div></td>
-                    <td><div><Box boxInfo={{'a': item.Application, 'b': i, 'c': 'Application'}} tableData={tableData} setTableData={setTableData} />
-                        <div><input type="checkbox" 
-                        onChange = {event => handleClick(event, item, 'OA')}
-                        /></div>
-                        <div>{item.Application[1]}</div>
-                        </div></td>
-                    <td><div><Box boxInfo={{'a': item.OA, 'b': i, 'c': 'OA'}} tableData={tableData} setTableData={setTableData} />
-                        <div><input type="checkbox" 
-                        onChange = {event => handleClick(event, item, 'OA')}
-                        /></div>
-                        <tr>{item.OA[1]}</tr>
-                        </div></td>
-                    <td><div><Box boxInfo={{'a': item.Interview, 'b': i, 'c': 'Interview'}} tableData={tableData} setTableData={setTableData} />
-                        <div><input type="checkbox" 
-                        clicked = {checkClicked(item, 'Interview')}
-                        onChange = {event => handleClick(event, item, 'Interview')}
-                        /></div>
-                        <tr>{item.Interview[1]}</tr>
-                        </div></td>
-                    <td><div><Box boxInfo={{'a': item.Rejected, 'b': i, 'c': 'Rejected'}} tableData={tableData} setTableData={setTableData} />
-                        <div><input type = "checkbox" 
-                        onChange = {event => handleClick(event, item, 'Rejected')}
-                        /></div>
-                        <tr>{item.Rejected[1]}</tr>
-                        </div></td>
-                    <td><div><Box boxInfo={{'a': item.Offer, 'b': i, 'c': 'Offer'}} tableData={tableData} setTableData={setTableData} />
-                        <div><input type="checkbox" 
-                        /></div>
-                        <tr>{item.Offer[1]}</tr>
-                        </div></td>
-                    </>
-                ))}
+                    {tableData.map((item, i) => (
+                        <>  
+                            <tr key={i}></tr>
+                            <td>
+                                <div>{item.company}</div>
+                            </td>
+                            <td>
+                                <div><input type="checkbox"
+                                    defaultChecked={item.application}
+                                    onChange = {event => handleClick(event, item, i, 'application')}/>
+                                    {item.application}
+                                </div>
+                            </td>
+                            <td>
+                                <div><input type="checkbox"
+                                    defaultChecked={item.oa}
+                                    onChange = {event => handleClick(event, item, i, 'oa')}/>
+                                    {item.oa}
+                                </div>
+                            </td>
+                            <td>
+                                <div><input type="checkbox"
+                                    defaultChecked={item.interview}
+                                    onChange = {event => handleClick(event, item, i, 'interview')}/>
+                                    {item.interview}
+                                </div>
+                            </td>
+                            <td>
+                                <div><input type="checkbox"
+                                    defaultChecked={item.rejected}
+                                    onChange = {event => handleClick(event, item, i, 'rejected')}/>
+                                    {item.rejected}
+                                </div>
+                            </td>
+                            <td>
+                                <div><input type="checkbox"
+                                    defaultChecked={item.offer}
+                                    onChange = {event => handleClick(event, item, i, 'offer')}/>
+                                    {item.offer}
+                                </div>
+                            </td>
+                        </>
+                    ))}
                 </tbody>
         </table>
             
