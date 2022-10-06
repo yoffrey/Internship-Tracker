@@ -1,14 +1,16 @@
 import checkLocalStorage from './checkLocalStorage';
 
 function updateJSON(index, boxCol, checked) {
-    let internshipData = checkLocalStorage()
+    var internshipData = checkLocalStorage()
     if (checked == null) {
         internshipData[index][boxCol] = null;     
     }
     else {
         internshipData[index][boxCol] = checked;
     }
-    internshipData.sort((a, b) => b.application-a.application || b.oa-a.oa || b.interview-a.interview || b.offer-a.offer || a.rejected - b.rejected)
+    internshipData.sort(function(a,b){
+        return (new Date(b.application) - new Date(a.application) && new Date(b.oa) - new Date(a.oa))
+    })
     localStorage.setItem('myData', JSON.stringify(internshipData))
 }
 

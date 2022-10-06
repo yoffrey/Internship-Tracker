@@ -1,26 +1,16 @@
-import Moment from 'moment';
 import React, { useState } from 'react';
 import updateJSON from './updateJSON';
 import checkLocalStorage from './checkLocalStorage';
-import props from 'prop-types';
+import sortF from './sort'
 
 function GenTable(){
     var internshipData = checkLocalStorage()
+    internshipData.sort((a,b) => {sortF(a,b)})
+    localStorage.setItem('myData', JSON.stringify(internshipData));
     const [tableData, setTableData] = useState(internshipData);
 
-    internshipData.sort((a, b) => b.application-a.application || b.oa-a.oa || b.interview-a.interview || b.offer-a.offer || a.rejected - b.rejected)
-    localStorage.setItem('myData', JSON.stringify(internshipData))
-
     const handleClick = (event, item, i, col) => {
-        /* 
-        On Change
-        Get the date
-        Check/Uncheck the box
-        Save date/check to file
-        Update the file
-        Update tableData
-        */
-        const formatDate = new Date()
+        let formatDate = new Date()
         let checked = item[col]
         if (checked == null){
             checked = formatDate
@@ -29,7 +19,9 @@ function GenTable(){
             checked = null
         }
         updateJSON(i, col, checked)
+        console.log(checkLocalStorage())
         setTableData(checkLocalStorage())
+        console.log(checkLocalStorage())
     }
 
     const convertToPrettyDate = (date) => {
