@@ -1,5 +1,4 @@
 import checkLocalStorage from './checkLocalStorage';
-import autoSort from './sort';
 
 function updateJSON(index, boxCol, checked) {
     let internshipData = checkLocalStorage()
