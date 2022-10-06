@@ -1,36 +1,41 @@
-import checkLocalStorage from './checkLocalStorage';
+function sortF(a, b){
+	if (new Date(a.offer) > new Date(b.offer)){
+		return 1
+	} else if (new Date(a.offer) < new Date(b.offer)){
+		return -1
+	}
 
-function autoSort(index, boxCol, checked) {
-    // boxCol = "Rejected"
-    let internshipData = checkLocalStorage()
+	if (new Date(a.application) > new Date(b.application)){
+		return -1
+	} else if (new Date(a.application) < new Date(b.application)){
+		return 1
+	} else {
+		return 0
+	}
 
-    if (boxCol == "Application"){
-        if (checked){
+	if (new Date(a.oa) > new Date(b.oa)){
+		return -1
+	} else if (new Date(a.oa) < new Date(b.oa)){
+		return 1
+	} else {
+		return 0
+	}
 
-        }
-        return internshipData
-    }
-    else if (boxCol == 'OA'){
-        return internshipData
-    }
-    else if (boxCol == 'Interview'){
-        return internshipData
-    }
-    else if (boxCol == 'Rejected'){
-        if (checked == null){
-            // Goes back to the top
-            return internshipData
-        }
-        else {
-            // if checked == '1'
-            internshipData.sort((a, b) => a.Rejected - b.Rejected);
-            return internshipData
-        }
-    }
-    else if (boxCol == 'Offer'){
-        return internshipData
-    }
-    return internshipData
+	if (new Date(a.interview) > new Date(b.interview)){
+		return -1
+	} else if (new Date(a.interview) < new Date(b.interview)){
+		return 1
+	} else {
+		return 0
+	}
+
+	if (new Date(a.rejected) < new Date(b.rejected)){
+		return -1
+	} else if (new Date(a.rejected) > new Date(b.rejected)){
+		return 1
+	} else {
+		return 0
+	}
 }
 
-export default autoSort
+export default sortF
