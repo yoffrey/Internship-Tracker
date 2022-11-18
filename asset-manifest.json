@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/internship-tracker/static/css/main.30a3a467.css",
-    "main.js": "/internship-tracker/static/js/main.7d15923b.js",
-    "static/media/Lato.ttf": "/internship-tracker/static/media/Lato.9d883d540ee2b4de8024.ttf",
-    "index.html": "/internship-tracker/index.html",
-    "main.30a3a467.css.map": "/internship-tracker/static/css/main.30a3a467.css.map",
-    "main.7d15923b.js.map": "/internship-tracker/static/js/main.7d15923b.js.map"
+    "main.css": "/Internship-Tracker/static/css/main.0589b96b.css",
+    "main.js": "/Internship-Tracker/static/js/main.7d15923b.js",
+    "static/media/Lato.ttf": "/Internship-Tracker/static/media/Lato.9d883d540ee2b4de8024.ttf",
+    "index.html": "/Internship-Tracker/index.html",
+    "main.0589b96b.css.map": "/Internship-Tracker/static/css/main.0589b96b.css.map",
+    "main.7d15923b.js.map": "/Internship-Tracker/static/js/main.7d15923b.js.map"
   },
   "entrypoints": [
-    "static/css/main.30a3a467.css",
+    "static/css/main.0589b96b.css",
     "static/js/main.7d15923b.js"
   ]
 }
