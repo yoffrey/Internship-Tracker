@@ -1,1 +1,0 @@
-se, encoding='utf-8')

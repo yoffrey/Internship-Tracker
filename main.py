@@ -1,9 +1,11 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 import pandas as pd
 import json
 
-driver = webdriver.Chrome('C:/bin/chromedriver')
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 #{"Company": "Optiver", "Location": "Amsterdam, Netherlands", "Application": [0, "__________"],  "OA": [0, "__________"],  "Interview": [0, "__________"],  "Rejected": [0, "__________"],  "Offer": [0, "__________"]}
 
@@ -36,6 +38,7 @@ for a in soup.find('table', attrs={'class':'table internships-table table-border
         set['interview'] = None
         set['rejected'] = None
         set['offer'] = None
+        set['link'] = ''
         allData.append(set)
 
 with open("internshipData.json", "w") as outfile:
