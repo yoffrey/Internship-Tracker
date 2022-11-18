@@ -89,7 +89,7 @@ function GenTable(){
                         <>
                         <tr key={i}/>
                             <tr>
-                                <td>
+                                <td style={{textAlign:"center"}}>
                                     <button onClick={event => handleRemove(event, i)}>Remove</button>
                                 </td>
                                 
