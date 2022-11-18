@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/internship-tracker/static/css/main.30a3a467.css",
+    "main.js": "/internship-tracker/static/js/main.7d15923b.js",
+    "static/media/Lato.ttf": "/internship-tracker/static/media/Lato.9d883d540ee2b4de8024.ttf",
+    "index.html": "/internship-tracker/index.html",
+    "main.30a3a467.css.map": "/internship-tracker/static/css/main.30a3a467.css.map",
+    "main.7d15923b.js.map": "/internship-tracker/static/js/main.7d15923b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.30a3a467.css",
+    "static/js/main.7d15923b.js"
+  ]
+}
