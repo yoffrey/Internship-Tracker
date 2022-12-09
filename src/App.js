@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import React, { useState } from 'react';
-import checkLocalStorage from './components/checkLocalStorage';
+import React from 'react';
 import GenTable from './components/GenTable';
 
 function App() {

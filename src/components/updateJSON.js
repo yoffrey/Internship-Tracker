@@ -8,7 +8,7 @@ function updateJSON(index, boxCol, checked) {
     else {
         internshipData[index][boxCol] = checked;
     }
-    internshipData.sort((a,b) => a.rejected-b.rejected || b.application-a.application || b.oa-a.oa || b.interview-a.interview ||  b.offer-a.offer)
+    internshipData.sort((a,b) => a.rejected-b.rejected || b.offer-a.offer || b.application-a.application || b.oa-a.oa || b.interview-a.interview)
     localStorage.setItem('myData', JSON.stringify(internshipData))
 }
 

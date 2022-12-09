@@ -1,16 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import updateJSON from './updateJSON';
 import updateLink from './updateLink';
 import addCompany from './addCompany';
 import removeCompany from './removeCompany'
 import checkLocalStorage from './checkLocalStorage';
 
-
-
 function GenTable(){
-    const ref = useRef(null);
     var internshipData = checkLocalStorage()
-    internshipData.sort((a,b) => a.rejected-b.rejected || b.application-a.application || b.oa-a.oa || b.interview-a.interview ||  b.offer-a.offer)
+    internshipData.sort((a,b) => a.rejected-b.rejected || b.offer-a.offer || b.application-a.application || b.oa-a.oa || b.interview-a.interview)
     localStorage.setItem('myData', JSON.stringify(internshipData));
     const [tableData, setTableData] = useState(internshipData);
     const [company, setCompany] = useState('')
@@ -92,11 +89,10 @@ function GenTable(){
                                 <td style={{textAlign:"center"}}>
                                     <button onClick={event => handleRemove(event, i)}>Remove</button>
                                 </td>
-                                
                                 <td>
                                     <div>{item.company}</div>
                                 </td>
-                                <td>
+                                <td >
                                     <div><input type="checkbox"
                                         checked={item.application !== null}
                                         onChange={event => handleClick(event, item, i, 'application')} />
